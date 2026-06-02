@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varshini Packers & Movers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .mer{
+            text-align: center;
+            background-color: #1877F2;
+            padding: 25px;
+            margin-top: anchor-size(-100px);
+        }
+        .sub{
+            margin-top: anchor-size(-20px);
+            text-align: center;
+            background-image: url("images/pic1.png");
+            
+
+        }
+
+        .subu{
+    background-color: #0d6efd;
+    display: flex;
+    gap: 40px;
+
+
+}
+.ros{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 50px;
+}
+.sn{
+    text-wrap: inherit;
+}
+.bn{
+    background-color: rgba(254, 228, 188, 0.526);
+    text-align: center;
+}
+
+
+/* ================= RESPONSIVE (SAME UI) ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+
+    .subu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .ros {
+        margin-left: 0;
+    }
+
+    .mer {
+        padding: 20px;
+    }
+
+    .sub {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .subu {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .ros {
+        margin-left: 0;
+        width: 90%;
+    }
+
+    .sn {
+        word-wrap: break-word;
+    }
+
+    .mer {
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    
+
+    .sub {
+        padding: 30px 10px;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    .mer {
+        font-size: 16px;
+    }
+
+    .ros {
+        width: 100%;
+    }
+
+    .bn {
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+<div class="social-float">
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/ 8939180119" target="_blank" class="whatsapp">
+        <img src="images\whatsapp.png">
+    </a>
+    <br>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/varshinipackers1996" target="_blank" class="instagram">
+        <img src="images\instagram.png">
+    </a>
+    
+
+</div>
+
+
+
+<h2 class="mer">Contact Us</h2>
+<form id="bookingForm" class="sub">
+    <br><br><br><br>
+     <p>Name : <input id="name" placeholder="Name"> </p> <br>
+    <p> Phone.no : <input id="phone" placeholder="Phone"> </p> <br>
+    <p>Service : <select name="select" id="class"><option value="1">select</option> 
+    <option value="House Relocation">House Relocation</option>
+    <option value="Office Shifting">Office Shifting</option>
+    <option value="Unpacking & Re-arranging">Unpacking & Re-arranging</option>
+    </select> </p> <br>
+    <p> Message : <textarea id="message"></textarea> </p> 
+   <button type="submit">Submit</button> <br><br>
+   
+</form>
+
+<section  class="subu">
+    <div class="ros">
+        <h2>About Us</h2>
+        <p class="sn">At Varshini Packers & Movers, we specialize in providing safe,<br> reliable, and hassle-free relocation services across India.
+        <br> With years of experience and a strong commitment to customer satisfaction.</p>
+    </div>
+
+    <div class="ros">
+        <h2>Quick Links</h2>
+        <ul>
+            <li><a onclick="window.location.href='index.html'">Home</a></li><br>
+            <li><a onclick="window.location.href='about.html'">Aboust Us</a></li><br>
+            <li><a onclick="window.location.href='gallery.html'">Gallery</a></li><br>
+            <li><a onclick="window.location.href='contact.html'">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div class="ros">
+        <h2>Our Services</h2>
+        <ul>
+            <li><a onclick="window.location.href='house.html'">House Relocations</a></li><br>
+            <li><a onclick="window.location.href='office.html'">Office Shifting</a></li><br>
+            <li><a onclick="window.location.href='unpackandreloc.html'">Unpacking & Re-arranging</a></li>
+        </ul>
+    </div>
+
+     <div class="ros">
+        <h2>Contact Us</h2>
+        <p>No.3/10, Elupidari Amman Koil ST,<br>
+Karambakkam, Porur,<br> Chennai, Tiruvallur<br>
+Tamil Nadu-600116.</p>
+<p> Mobile.no:<a href="tel: 8939180119"> 8939180119</a>  </p><br>
+<p>Send Mail : <a href="mailto: Varshinipackers1996@gmail.com ">Varshinipackers1996@gmail.com </a></p>
+
+    </div>
+</section>
+
+<script>
+
+const form = document.getElementById("bookingForm");
+
+form.addEventListener("submit", function(e) {
+
+    e.preventDefault(); // stop page reload
+
+    const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        service: document.getElementById("class").value,
+        message: document.getElementById("message").value
+    };
+
+    fetch("http://localhost:8080/api/book", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
+    .then(res => res.text())
+
+    .then(response => {
+        alert("✅ Successfully Submitted");
+
+        console.log(response);
+
+        form.reset();
+    })
+
+    .catch(error => {
+
+        console.error("Error:", error);
+
+        alert("❌ Failed");
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+
+
