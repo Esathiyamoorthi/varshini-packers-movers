@@ -139,14 +139,14 @@
     <input type="hidden" name="_subject" value="New Booking Request">
     <input type="hidden" name="_captcha" value="false">
     <br><br><br><br>
-     <p>Name : <input id="name" placeholder="Name"> </p> <br>
-    <p> Phone.no : <input id="phone" placeholder="Phone"> </p> <br>
-    <p>Service : <select name="select" id="class"><option value="1">select</option> 
+     <p>Name : <input id="name" placeholder="Name" required> </p> <br>
+    <p> Phone.no : <input id="phone" placeholder="Phone" required> </p> <br>
+    <p>Service : <select name="select" id="class" required><option value="1">select</option> 
     <option value="House Relocation">House Relocation</option>
     <option value="Office Shifting">Office Shifting</option>
     <option value="Unpacking & Re-arranging">Unpacking & Re-arranging</option>
     </select> </p> <br>
-    <p> Message : <textarea id="message"></textarea> </p> 
+    <p> Message : <textarea id="message" rows="4"></textarea> </p> 
    <button type="submit">Submit</button> <br><br>
    
 </form>
