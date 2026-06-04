@@ -135,7 +135,9 @@
 
 
 <h2 class="mer">Contact Us</h2>
-<form id="bookingForm" class="sub">
+<form action="https://formsubmit.co/sm010010001@gmail.com" method="POST" class="sub">
+    <input type="hidden" name="_subject" value="New Booking Request">
+    <input type="hidden" name="_captcha" value="false">
     <br><br><br><br>
      <p>Name : <input id="name" placeholder="Name"> </p> <br>
     <p> Phone.no : <input id="phone" placeholder="Phone"> </p> <br>
@@ -185,50 +187,6 @@ Tamil Nadu-600116.</p>
 
     </div>
 </section>
-
-<script>
-
-const form = document.getElementById("bookingForm");
-
-form.addEventListener("submit", function(e) {
-
-    e.preventDefault(); // stop page reload
-
-    const data = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        service: document.getElementById("class").value,
-        message: document.getElementById("message").value
-    };
-
-    fetch("http://localhost:8080/api/book", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-
-    .then(res => res.text())
-
-    .then(response => {
-        alert("✅ Successfully Submitted");
-
-        console.log(response);
-
-        form.reset();
-    })
-
-    .catch(error => {
-
-        console.error("Error:", error);
-
-        alert("❌ Failed");
-    });
-
-});
-
-</script>
 
 </body>
 </html>
