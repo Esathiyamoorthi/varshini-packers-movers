@@ -462,8 +462,14 @@ button {
         height: 120px;
     }
 
+      .about-content {
+        width: 90%;
+        text-align: center;
+          margin-top: 25px;
+    }
     .img2 {
         left: 60px;
+         top: 20px;
     }
 
     .experience {
