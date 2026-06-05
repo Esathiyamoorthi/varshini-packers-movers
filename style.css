@@ -419,16 +419,18 @@ button {
     .about-content {
         width: 90%;
         text-align: center;
+          margin-top: 25px;
     }
 
     .img2 {
         left: 80px;
-        top: 40px;
+        top: 20px;
     }
 
     .experience {
         left: 60px;
         top: 80px;
+         height: 120px;
     }
 
     /* Social */
