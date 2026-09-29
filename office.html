@@ -1,216 +1,474 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varshini Packers & Movers</title>
+    <meta name="description" content="Office relocation in Chennai by Varshini Packers & Movers. Planned, low-downtime office shifting with secure packing, transport and set-up.">
+    <meta name="theme-color" content="#141414">
+    <title>Office Relocation - Varshini Packers & Movers</title>
+    <link rel="icon" href="images/logo-14-dark.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        .mer{ margin-top: anchor-size(-12px);
-            background:deepskyblue;
-            color:white;
-            padding:30px;
-            text-align: center;
+        :root {
+            --bg: #141414;
+            --bg-soft: #1b1b1b;
+            --card: #1f1f1f;
+            --card-hover: #262626;
+            --red: #e50914;
+            --red-dark: #b20710;
+            --text: #ffffff;
+            --muted: #b3b3b3;
+            --line: #2f2f2f;
+            --radius: 12px;
+            --nav-h: 68px;
         }
 
-        body{
-            padding: 0px;
-            margin: 0px;
-             background-color: gainsboro;
-        }
-        img{
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-            margin: 30px;
-            height: 400px;
-            width: 700px;
-            border-top-left-radius: 100px;
-            border-bottom-left-radius: 100px;
-            border-top-right-radius: 100px;
-            border-bottom-right-radius: 100px;
-            
+        body {
+            font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden;
         }
-        .rv{
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--red);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .container { width: min(1180px, 100% - 40px); margin-inline: auto; }
+
+        /* ---------- NAVBAR ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--nav-h);
+            background: rgba(20, 20, 20, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav .container { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 44px; width: auto; }
+
+        .nav-links { display: flex; align-items: center; gap: 6px; }
+        .nav-links > li { position: relative; }
+        .nav-links a,
+        .nav-links button.drop-btn {
+            display: block;
+            padding: 10px 14px;
+            font: inherit;
+            font-weight: 500;
+            color: #e5e5e5;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: color .2s, background .2s;
+        }
+        .nav-links a:hover,
+        .nav-links button.drop-btn:hover,
+        .nav-links a.active,
+        .nav-links button.drop-btn.active { color: #fff; background: rgba(255, 255, 255, 0.08); }
+        .nav-links a.active,
+        .nav-links button.drop-btn.active { box-shadow: inset 0 -3px 0 var(--red); border-radius: 6px 6px 0 0; }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--red);
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 6px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity .2s, transform .2s, visibility .2s;
+        }
+        .has-drop:hover .dropdown,
+        .has-drop:focus-within .dropdown,
+        .has-drop.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a.active { box-shadow: inset 3px 0 0 var(--red); border-radius: 6px; }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+        .menu-toggle span,
+        .menu-toggle span::before,
+        .menu-toggle span::after {
+            content: "";
+            position: absolute;
+            left: 11px;
+            width: 20px;
+            height: 2px;
+            background: #fff;
+            transition: transform .25s, opacity .25s;
+        }
+        .menu-toggle span { top: 21px; }
+        .menu-toggle span::before { left: 0; top: -7px; }
+        .menu-toggle span::after { left: 0; top: 7px; }
+        .menu-toggle[aria-expanded="true"] span { background: transparent; }
+        .menu-toggle[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ---------- PAGE HEADER ---------- */
+        .page-head {
+            padding: clamp(56px, 10vw, 110px) 0 clamp(40px, 7vw, 72px);
+            background:
+                linear-gradient(180deg, rgba(20,20,20,0.55) 0%, var(--bg) 100%),
+                radial-gradient(ellipse at 20% 0%, rgba(229, 9, 20, 0.35), transparent 60%),
+                var(--bg-soft);
+            border-bottom: 1px solid var(--line);
+        }
+        .page-head h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .page-head p { margin-top: 14px; max-width: 56ch; color: var(--muted); font-size: clamp(1rem, 2.4vw, 1.2rem); }
+
+        /* ---------- SERVICE CONTENT ---------- */
+        .service { padding: clamp(40px, 7vw, 80px) 0; }
+        .service-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            gap: clamp(28px, 5vw, 60px);
+            align-items: start;
+        }
+        .service-side { position: sticky; top: calc(var(--nav-h) + 24px); }
+        .service-side img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+        }
+        .service-side h2 { margin-top: 20px; font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; line-height: 1.2; }
+        .service-side .lead { color: var(--muted); margin-top: 6px; }
+
+        .include-list { margin-top: 20px; display: grid; gap: 10px; }
+        .include-list li {
             display: flex;
-            gap: 20px;
             align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--red);
+            border-radius: 8px;
+            font-weight: 600;
         }
-        .ss{
-            
-             margin-left:10px;
-            display:flex;
-            flex-direction: column;
+
+        .service-body p { color: #d9d9d9; font-size: clamp(1rem, 1.9vw, 1.08rem); max-width: 68ch; }
+        .service-body p + p { margin-top: 20px; }
+
+        .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+        .btn {
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
+            padding: 14px 26px;
+            font: inherit;
+            font-weight: 700;
+            color: #fff;
+            background: var(--red);
+            border: 2px solid var(--red);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background .2s, color .2s, border-color .2s;
         }
-          
+        .btn:hover { background: var(--red-dark); border-color: var(--red-dark); }
+        .btn-outline { background: transparent; border-color: #fff; }
+        .btn-outline:hover { background: #fff; color: #141414; border-color: #fff; }
 
-      .subu{
-    background-color: #0d6efd;
-    display: flex;
-    gap: 40px;
+        /* ---------- FOOTER ---------- */
+        .footer { background: #0d0d0d; border-top: 3px solid var(--red); padding: 56px 0 28px; color: var(--muted); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.4fr; gap: 36px; }
+        .footer h2 { color: #fff; font-size: 1.1rem; margin-bottom: 16px; }
+        .footer li + li { margin-top: 10px; }
+        .footer a { transition: color .2s; }
+        .footer a:hover { color: #fff; }
+        .footer address { font-style: normal; }
+        .footer p + p { margin-top: 10px; }
+        .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); text-align: center; font-size: .9rem; }
+        .footer a[href^="tel"], .footer a[href^="mailto"] { color: #fff; word-break: break-word; }
 
+        /* ---------- FLOATING SOCIAL BUTTONS ---------- */
+        .social-float { position: fixed; right: 16px; bottom: 16px; z-index: 90; display: flex; flex-direction: column; gap: 12px; }
+        .social-float a {
+            width: 52px; height: 52px; border-radius: 50%; background: #fff;
+            display: grid; place-items: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform .2s;
+        }
+        .social-float a:hover { transform: scale(1.1); }
+        .social-float img { width: 32px; height: 32px; object-fit: contain; }
 
-}
-.ros{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-left: 50px;
-}
-.sn{
-    text-wrap: inherit;
-}
+        /* ---------- TABLET ---------- */
+        @media (max-width: 992px) {
+            .service-grid { grid-template-columns: 1fr; }
+            .service-side { position: static; }
+            .service-side img { aspect-ratio: 16 / 9; }
+            .include-list { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
 
-/* ================= RESPONSIVE (SAME UI) ================= */
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: var(--nav-h);
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 20px 18px;
+                background: #141414;
+                border-bottom: 3px solid var(--red);
+                max-height: calc(100vh - var(--nav-h));
+                overflow-y: auto;
+                display: none;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a, .nav-links button.drop-btn {
+                width: 100%;
+                text-align: left;
+                padding: 14px 8px;
+                border-bottom: 1px solid var(--line);
+                border-radius: 0;
+            }
+            .nav-links a.active,
+            .nav-links button.drop-btn.active { box-shadow: inset 3px 0 0 var(--red); border-radius: 0; }
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                border: 0;
+                background: var(--bg-soft);
+                padding: 0 0 0 14px;
+            }
+            .has-drop:hover .dropdown { display: none; }
+            .has-drop.open .dropdown { display: block; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+        }
 
-/* Tablet */
-@media (max-width: 992px) {
+        /* ---------- SMALL MOBILE ---------- */
+        @media (max-width: 480px) {
+            .container { width: calc(100% - 32px); }
+            .nav-logo img { height: 38px; }
+            .include-list { grid-template-columns: 1fr; }
+            .cta-row .btn { width: 100%; }
+            .social-float { right: 12px; bottom: 12px; }
+            .social-float a { width: 46px; height: 46px; }
+            .social-float img { width: 28px; height: 28px; }
+        }
 
-    img {
-        width: 500px;
-        height: auto;
-    }
-
-    .rv {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .ss {
-        margin-left: 0;
-    }
-
-    .subu {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .ros {
-        margin-left: 0;
-    }
-}
-
-
-/* Mobile */
-@media (max-width: 768px) {
-
-    /* Image */
-    img {
-        width: 90%;
-        height: auto;
-        margin: 10px;
-    }
-
-    /* Layout change (same UI, just stack) */
-    .rv {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .ss {
-        width: 90%;
-        text-align: center;
-    }
-
-    /* Header */
-    .mer {
-        padding: 20px;
-        font-size: 18px;
-    }
-
-    /* Footer */
-    .subu {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .ros {
-        margin-left: 0;
-        width: 90%;
-    }
-
-    .sn {
-        word-wrap: break-word;
-    }
-}
-
-
-/* Small Mobile */
-@media (max-width: 480px) {
-
-    img {
-        width: 100%;
-    }
-
-    .mer {
-        font-size: 16px;
-        padding: 15px;
-    }
-}
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+        }
     </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
+<header class="nav">
+    <div class="container">
+        <a href="index.html" class="nav-logo" aria-label="Varshini Packers & Movers home">
+            <img src="images/logo-14-dark.png" alt="Varshini Packers & Movers logo">
+        </a>
 
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span>
+        </button>
 
-<h2 class="mer">Our Services</h2>
-<div class="rv">
-   
-    <div class="ss"> 
-        <img src="images/pic5.jpg" >
-        <h3>Office Relocation</h3>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="has-drop">
+                <button class="drop-btn active" type="button" aria-expanded="false" aria-haspopup="true">Services &#9662;</button>
+                <ul class="dropdown">
+                    <li><a href="house.html">House Shifting</a></li>
+                    <li><a href="office.html" class="active" aria-current="page">Office Relocation</a></li>
+                    <li><a href="unpackandreloc.html">Packing &amp; Unpacking</a></li>
+                </ul>
+            </li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </div>
-         <p>
-            At Varshini Packers & Movers, we understand that office relocation is a critical process that requires careful planning, precision, and minimal downtime. Moving an office is not just about transporting furniture and equipment—it involves shifting your entire business operations, important documents, IT infrastructure, and workplace setup. That is why we offer professional office relocation services designed to ensure a smooth, efficient, and disruption-free transition. Our goal is to help your business resume operations as quickly as possible without affecting productivity.
-            <br><br>
-            Our experienced team specializes in handling all aspects of office shifting with professionalism and care. We begin by understanding your business requirements, timelines, and specific needs to create a customized relocation plan. Whether you are moving a small office or a large corporate setup, we ensure every detail is managed systematically. From dismantling office furniture and packing sensitive equipment to labeling files and organizing assets, we follow a structured approach to maintain order throughout the process.
-            <br><br>
-            We use high-quality packing materials and advanced packing techniques to protect all items, including computers, servers, printers, and confidential documents. Our trained professionals handle fragile and high-value equipment with extra care, ensuring there is no damage during the move. Proper labeling and inventory management allow for easy identification and quick setup at the new location. This organized process saves time and helps avoid confusion during unpacking and rearrangement.
-            <br><br>
-            Transportation is carried out using well-maintained vehicles equipped to handle office goods safely. We ensure secure loading and unloading practices, minimizing the risk of damage or loss. Timely delivery is a key part of our service because we understand that delays can impact your business operations. Our team works efficiently to complete the relocation within the agreed schedule, ensuring your office is ready to function as soon as possible.
-            <br><br>
-            One of the biggest challenges in office relocation is minimizing downtime, and we focus strongly on achieving that. Our team coordinates closely with your staff to plan the move in a way that reduces disruption to your daily workflow. We can also offer flexible scheduling, including weekend or after-hours relocation, to ensure your business continues running smoothly. Once the items reach the new location, we assist with unpacking, reassembling furniture, and setting up workspaces so your employees can get back to work quickly.
-            <br><br>
-            Transparency and trust are at the core of our services. We provide clear pricing with no hidden charges, allowing you to plan your relocation budget confidently. Our customer support team remains available throughout the process to address any concerns and provide updates, ensuring complete peace of mind.
-            <br><br>
-            Choosing Varshini Packers & Movers for your office relocation means partnering with a team that values professionalism, efficiency, and reliability. We are committed to delivering a seamless moving experience that supports your business growth. With our expertise and attention to detail, you can trust us to handle your office relocation with care, precision, and complete responsibility.
-        </p>
+</header>
+
+<main>
+    <div class="page-head">
+        <div class="container">
+            <h1>Office Relocation</h1>
+            <p>Planned, low-downtime office shifting so your business is back to work fast.</p>
+        </div>
+    </div>
+
+    <section class="service">
+        <div class="container service-grid">
+
+            <aside class="service-side">
+                <img src="images/pic5.jpg" alt="Office furniture and equipment being packed for relocation" loading="lazy">
+                <h2>Your office, moved without the disruption</h2>
+                <p class="lead">From dismantling to set-up at the new location, handled by our trained team.</p>
+
+                <ul class="include-list">
+                    <li>&#10004; Custom relocation plan</li>
+                    <li>&#10004; Secure packing of IT and files</li>
+                    <li>&#10004; Weekend and after-hours moves</li>
+                    <li>&#10004; Unpacking and workspace set-up</li>
+                </ul>
+            </aside>
+
+            <article class="service-body">
+                <p>
+                    At Varshini Packers &amp; Movers, we understand that office relocation is a critical process that requires careful planning, precision, and minimal downtime. Moving an office is not just about transporting furniture and equipment—it involves shifting your entire business operations, important documents, IT infrastructure, and workplace setup. That is why we offer professional office relocation services designed to ensure a smooth, efficient, and disruption-free transition. Our goal is to help your business resume operations as quickly as possible without affecting productivity.
+                </p>
+                <p>
+                    Our experienced team specializes in handling all aspects of office shifting with professionalism and care. We begin by understanding your business requirements, timelines, and specific needs to create a customized relocation plan. Whether you are moving a small office or a large corporate setup, we ensure every detail is managed systematically. From dismantling office furniture and packing sensitive equipment to labeling files and organizing assets, we follow a structured approach to maintain order throughout the process.
+                </p>
+                <p>
+                    We use high-quality packing materials and advanced packing techniques to protect all items, including computers, servers, printers, and confidential documents. Our trained professionals handle fragile and high-value equipment with extra care, ensuring there is no damage during the move. Proper labeling and inventory management allow for easy identification and quick setup at the new location. This organized process saves time and helps avoid confusion during unpacking and rearrangement.
+                </p>
+                <p>
+                    Transportation is carried out using well-maintained vehicles equipped to handle office goods safely. We ensure secure loading and unloading practices, minimizing the risk of damage or loss. Timely delivery is a key part of our service because we understand that delays can impact your business operations. Our team works efficiently to complete the relocation within the agreed schedule, ensuring your office is ready to function as soon as possible.
+                </p>
+                <p>
+                    One of the biggest challenges in office relocation is minimizing downtime, and we focus strongly on achieving that. Our team coordinates closely with your staff to plan the move in a way that reduces disruption to your daily workflow. We can also offer flexible scheduling, including weekend or after-hours relocation, to ensure your business continues running smoothly. Once the items reach the new location, we assist with unpacking, reassembling furniture, and setting up workspaces so your employees can get back to work quickly.
+                </p>
+                <p>
+                    Transparency and trust are at the core of our services. We provide clear pricing with no hidden charges, allowing you to plan your relocation budget confidently. Our customer support team remains available throughout the process to address any concerns and provide updates, ensuring complete peace of mind.
+                </p>
+                <p>
+                    Choosing Varshini Packers &amp; Movers for your office relocation means partnering with a team that values professionalism, efficiency, and reliability. We are committed to delivering a seamless moving experience that supports your business growth. With our expertise and attention to detail, you can trust us to handle your office relocation with care, precision, and complete responsibility.
+                </p>
+
+                <div class="cta-row">
+                    <a class="btn" href="contact.html">Get a free quote</a>
+                    <a class="btn btn-outline" href="tel:+918939180119">Call 8939180119</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+</main>
+
+<!-- FLOATING SOCIAL BUTTONS -->
+<div class="social-float">
+    <a href="https://wa.me/918939180119" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <img src="images/whatsapp.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.instagram.com/varshinipackers1996" target="_blank" rel="noopener" aria-label="Visit our Instagram">
+        <img src="images/instagram.png" alt="Instagram">
+    </a>
 </div>
 
-<selection  class="subu">
-    <div class="ros">
-        <h2>About Us</h2>
-        <p class="sn">At Varshini Packers & Movers, we specialize in providing safe,<br> reliable, and hassle-free relocation services across India.
-        <br> With years of experience and a strong commitment to customer satisfaction.</p>
-    </div>
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h2>About Us</h2>
+                <p>
+                    At Varshini Packers &amp; Movers, we specialize in providing safe,
+                    reliable, and hassle-free relocation services across India.
+                    With years of experience and a strong commitment to customer satisfaction.
+                </p>
+            </div>
 
-    <div class="ros">
-        <h2>Quick Links</h2>
-        <ul>
-            <li><a onclick="window.location.href='index.html'">Home</a></li><br>
-            <li><a onclick="window.location.href='about.html'">Aboust Us</a></li><br>
-            <li><a onclick="window.location.href='gallery.html'">Gallery</a></li><br>
-            <li><a onclick="window.location.href='contact.html'">Contact Us</a></li>
-        </ul>
-    </div>
+            <nav aria-label="Quick links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
 
-    <div class="ros">
-        <h2>Our Services</h2>
-        <ul>
-            <li><a onclick="window.location.href='house.html'">House Relocations</a></li><br>
-            <li><a onclick="window.location.href='office.html'">Office Shifting</a></li><br>
-            <li><a onclick="window.location.href='unpackandreloc.html'">Unpacking & Re-arranging</a></li>
-        </ul>
-    </div>
+            <nav aria-label="Our services">
+                <h2>Our Services</h2>
+                <ul>
+                    <li><a href="house.html">House Relocations</a></li>
+                    <li><a href="office.html">Office Shifting</a></li>
+                    <li><a href="unpackandreloc.html">Unpacking &amp; Re-arranging</a></li>
+                </ul>
+            </nav>
 
-    <div class="ros">
-        <h2>Contact Us</h2>
-        <p>No.3/10, Elupidari Amman Koil ST,<br>
-Karambakkam, Porur,<br> Chennai, Tiruvallur<br>
-Tamil Nadu-600116.</p>
-<p> Mobile.no:<a href="tel: 8939180119"> 8939180119</a>  </p><br>
-<p>Send Mail : <a href="mailto: Varshinipackers1996@gmail.com ">Varshinipackers1996@gmail.com </a></p>
+            <div>
+                <h2>Contact Us</h2>
+                <address>
+                    <p>
+                        No.3/10, Elupidari Amman Koil ST,<br>
+                        Karambakkam, Porur,<br>
+                        Chennai, Tiruvallur<br>
+                        Tamil Nadu-600116.
+                    </p>
+                    <p>Mobile no: <a href="tel:+918939180119">8939180119</a></p>
+                    <p>Send mail: <a href="mailto:Varshinipackers1996@gmail.com">Varshinipackers1996@gmail.com</a></p>
+                </address>
+            </div>
+        </div>
 
+        <p class="footer-bottom">&copy; <span id="year">2026</span> Varshini Packers &amp; Movers. All rights reserved.</p>
     </div>
-</selection>
+</footer>
+
+<script>
+    // Mobile menu
+    var toggle = document.getElementById('menuToggle');
+    var links = document.getElementById('navLinks');
+    toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+
+    // Services dropdown
+    var drop = document.querySelector('.has-drop');
+    var dropBtn = drop.querySelector('.drop-btn');
+    dropBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = drop.classList.toggle('open');
+        dropBtn.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', function (e) {
+        if (!drop.contains(e.target)) {
+            drop.classList.remove('open');
+            dropBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
