@@ -1,177 +1,601 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varshini Packers & Movers</title>
-    <meta name="description"
-content="Varshini Packers & Movers Chennai provides house shifting, office relocation, packing, unpacking and transportation services across India.">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Varshini Packers & Movers Chennai provides house shifting, office relocation, packing, unpacking and transportation services across India.">
+    <meta name="theme-color" content="#141414">
+    <title>Varshini Packers & Movers | House & Office Shifting in Chennai</title>
+    <link rel="icon" href="images/logo-14-dark.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #141414;
+            --bg-soft: #1b1b1b;
+            --card: #1f1f1f;
+            --card-hover: #262626;
+            --red: #e50914;
+            --red-dark: #b20710;
+            --text: #ffffff;
+            --muted: #b3b3b3;
+            --line: #2f2f2f;
+            --radius: 12px;
+            --nav-h: 68px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--red);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .container { width: min(1180px, 100% - 40px); margin-inline: auto; }
+
+        /* ---------- NAVBAR ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--nav-h);
+            background: rgba(20, 20, 20, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav .container { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 44px; width: auto; }
+
+        .nav-links { display: flex; align-items: center; gap: 6px; }
+        .nav-links > li { position: relative; }
+        .nav-links a,
+        .nav-links button.drop-btn {
+            display: block;
+            padding: 10px 14px;
+            font: inherit;
+            font-weight: 500;
+            color: #e5e5e5;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: color .2s, background .2s;
+        }
+        .nav-links a:hover,
+        .nav-links button.drop-btn:hover,
+        .nav-links a.active { color: #fff; background: rgba(255, 255, 255, 0.08); }
+        .nav-links a.active { box-shadow: inset 0 -3px 0 var(--red); border-radius: 6px 6px 0 0; }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--red);
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 6px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity .2s, transform .2s, visibility .2s;
+        }
+        .has-drop:hover .dropdown,
+        .has-drop:focus-within .dropdown,
+        .has-drop.open .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+        .menu-toggle span,
+        .menu-toggle span::before,
+        .menu-toggle span::after {
+            content: "";
+            position: absolute;
+            left: 11px;
+            width: 20px;
+            height: 2px;
+            background: #fff;
+            transition: transform .25s, opacity .25s;
+        }
+        .menu-toggle span { top: 21px; }
+        .menu-toggle span::before { left: 0; top: -7px; }
+        .menu-toggle span::after { left: 0; top: 7px; }
+        .menu-toggle[aria-expanded="true"] span { background: transparent; }
+        .menu-toggle[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ---------- BUTTONS ---------- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font: inherit;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #fff;
+            background: var(--red);
+            border: 2px solid var(--red);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background .2s, color .2s, border-color .2s, transform .1s;
+        }
+        .btn:hover { background: var(--red-dark); border-color: var(--red-dark); }
+        .btn:active { transform: scale(0.98); }
+        .btn-outline { background: rgba(109, 109, 110, 0.5); border-color: transparent; }
+        .btn-outline:hover { background: rgba(109, 109, 110, 0.75); border-color: transparent; }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            position: relative;
+            min-height: clamp(460px, 80vh, 700px);
+            display: flex;
+            align-items: center;
+            isolation: isolate;
+            border-bottom: 1px solid var(--line);
+        }
+        .hero-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(20,20,20,0.92) 0%, rgba(20,20,20,0.6) 50%, rgba(20,20,20,0.2) 100%),
+                linear-gradient(0deg, var(--bg) 0%, transparent 30%);
+        }
+        .hero-content { padding: 60px 0; max-width: 640px; }
+        .hero h1 {
+            font-size: clamp(2.3rem, 6.5vw, 4.4rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+        }
+        .hero p { margin-top: 16px; color: #e5e5e5; font-size: clamp(1.05rem, 2.5vw, 1.3rem); max-width: 46ch; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+        section.block { padding: clamp(48px, 8vw, 96px) 0; }
+
+        .section-title {
+            font-size: clamp(1.7rem, 4.4vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+        .kicker { color: var(--red); font-weight: 700; margin-bottom: 6px; }
+
+        /* ---------- ABOUT ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(28px, 5vw, 64px);
+            align-items: center;
+        }
+        .about-images { position: relative; padding-bottom: 40px; }
+        .about-images .img1 {
+            width: 78%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+        }
+        .about-images .img2 {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 52%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: var(--radius);
+            border: 4px solid var(--bg);
+        }
+        .experience {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            background: var(--red);
+            padding: 14px 20px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+        .experience h2 { font-size: 2.2rem; font-weight: 800; }
+        .experience p { font-size: .95rem; font-weight: 600; }
+
+        .about-content p { color: #d9d9d9; margin-top: 14px; max-width: 56ch; }
+        .check-list {
+            margin: 22px 0 28px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px 20px;
+        }
+        .check-list li { font-weight: 600; }
+        .check-list li::before { content: "\2714"; color: var(--red); margin-right: 8px; }
+
+        /* ---------- SERVICES ---------- */
+        .services { background: var(--bg-soft); border-block: 1px solid var(--line); }
+        .services-head { text-align: center; margin-bottom: 48px; }
+        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .card {
+            display: flex;
+            flex-direction: column;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform .3s, border-color .3s, background .3s;
+        }
+        .card:hover { transform: translateY(-6px); border-color: var(--red); background: var(--card-hover); }
+        .card-img { aspect-ratio: 16 / 10; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+        .card:hover .card-img img { transform: scale(1.07); }
+        .card-body { display: flex; flex-direction: column; flex: 1; padding: 24px; }
+        .card-body h3 { font-size: 1.3rem; margin-bottom: 8px; }
+        .card-body p { color: var(--muted); flex: 1; }
+        .card-body .btn { margin-top: 20px; padding: 12px 20px; font-size: 1rem; width: 100%; }
+
+        /* ---------- CTA BAND ---------- */
+        .cta {
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(229, 9, 20, 0.35), transparent 65%),
+                var(--bg);
+        }
+        .cta p { color: var(--muted); margin: 10px auto 26px; max-width: 48ch; }
+        .cta .hero-actions { justify-content: center; }
+
+        /* ---------- FOOTER ---------- */
+        .footer { background: #0d0d0d; border-top: 3px solid var(--red); padding: 56px 0 28px; color: var(--muted); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.4fr; gap: 36px; }
+        .footer h2 { color: #fff; font-size: 1.1rem; margin-bottom: 16px; }
+        .footer li + li { margin-top: 10px; }
+        .footer a { transition: color .2s; }
+        .footer a:hover { color: #fff; }
+        .footer address { font-style: normal; }
+        .footer p + p { margin-top: 10px; }
+        .footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); text-align: center; font-size: .9rem; }
+        .footer a[href^="tel"], .footer a[href^="mailto"] { color: #fff; word-break: break-word; }
+
+        /* ---------- FLOATING SOCIAL BUTTONS ---------- */
+        .social-float { position: fixed; right: 16px; bottom: 16px; z-index: 90; display: flex; flex-direction: column; gap: 12px; }
+        .social-float a {
+            width: 52px; height: 52px; border-radius: 50%; background: #fff;
+            display: grid; place-items: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+            transition: transform .2s;
+        }
+        .social-float a:hover { transform: scale(1.1); }
+        .social-float img { width: 32px; height: 32px; object-fit: contain; }
+
+        /* ---------- TABLET ---------- */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .about-images { max-width: 520px; margin-inline: auto; width: 100%; }
+            .service-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: var(--nav-h);
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 20px 18px;
+                background: #141414;
+                border-bottom: 3px solid var(--red);
+                max-height: calc(100vh - var(--nav-h));
+                overflow-y: auto;
+                display: none;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a, .nav-links button.drop-btn {
+                width: 100%;
+                text-align: left;
+                padding: 14px 8px;
+                border-bottom: 1px solid var(--line);
+                border-radius: 0;
+            }
+            .nav-links a.active { box-shadow: inset 3px 0 0 var(--red); border-radius: 0; }
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                border: 0;
+                background: var(--bg-soft);
+                padding: 0 0 0 14px;
+            }
+            .has-drop:hover .dropdown { display: none; }
+            .has-drop.open .dropdown { display: block; }
+            .hero::after {
+                background: linear-gradient(0deg, var(--bg) 0%, rgba(20,20,20,0.75) 45%, rgba(20,20,20,0.6) 100%);
+            }
+            .service-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+        }
+
+        /* ---------- SMALL MOBILE ---------- */
+        @media (max-width: 480px) {
+            .container { width: calc(100% - 32px); }
+            .nav-logo img { height: 38px; }
+            .check-list { grid-template-columns: 1fr; }
+            .hero-actions .btn { width: 100%; }
+            .experience { left: 8px; bottom: 8px; padding: 10px 14px; }
+            .experience h2 { font-size: 1.8rem; }
+            .social-float { right: 12px; bottom: 12px; }
+            .social-float a { width: 46px; height: 46px; }
+            .social-float img { width: 28px; height: 28px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+        }
+    </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
+<header class="nav">
+    <div class="container">
+        <a href="index.html" class="nav-logo" aria-label="Varshini Packers & Movers home">
+            <img src="images/logo-14-dark.png" alt="Varshini Packers & Movers logo">
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="has-drop">
+                <button class="drop-btn" type="button" aria-expanded="false" aria-haspopup="true">Services &#9662;</button>
+                <ul class="dropdown">
+                    <li><a href="house.html">House Shifting</a></li>
+                    <li><a href="office.html">Office Relocation</a></li>
+                    <li><a href="unpackandreloc.html">Packing &amp; Unpacking</a></li>
+                </ul>
+            </li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <img src="images/pic2.jpeg" class="hero-img" alt="Varshini Packers & Movers team loading a moving truck" fetchpriority="high">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Safe, Fast &amp; Reliable Shifting Services</h1>
+                <p>House shifting, office relocation, packing and unpacking from Chennai to anywhere in India.</p>
+                <div class="hero-actions">
+                    <a class="btn" href="contact.html">Book Now</a>
+                    <a class="btn btn-outline" href="tel:+918939180119">Call 8939180119</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="block about">
+        <div class="container about-grid">
+            <div class="about-images">
+                <img src="images/pic3.jpg" class="img1" alt="Our team handling household goods with care" loading="lazy">
+                <img src="images/package.png" class="img2" alt="Packed boxes ready for moving" loading="lazy">
+                <div class="experience">
+                    <h2>10+</h2>
+                    <p>Years Of Experience</p>
+                </div>
+            </div>
+
+            <div class="about-content">
+                <p class="kicker">About Company</p>
+                <h2 class="section-title">Varshini Packers &amp; Movers</h2>
+                <p>
+                    At Varshini Packers &amp; Movers, we provide safe, reliable and hassle-free relocation services across India.
+                </p>
+
+                <ul class="check-list">
+                    <li>Safe &amp; Secure Handling</li>
+                    <li>On-Time Delivery</li>
+                    <li>Transparent Pricing</li>
+                    <li>Customer Satisfaction</li>
+                    <li>Professionals</li>
+                    <li>Easy Move Services</li>
+                </ul>
+
+                <a class="btn" href="about.html">Explore More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="block services">
+        <div class="container">
+            <div class="services-head">
+                <p class="kicker">Every Move, Made Easy</p>
+                <h2 class="section-title">Our Services</h2>
+            </div>
+
+            <div class="service-grid">
+                <article class="card">
+                    <div class="card-img">
+                        <img src="images/19.webp" alt="House relocation with expert packing" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>House Relocation</h3>
+                        <p>Safe and hassle-free house relocation with expert packing.</p>
+                        <a class="btn" href="house.html">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img">
+                        <img src="images/pic5.jpg" alt="Office shifting with secure handling" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>Office Shifting</h3>
+                        <p>Efficient office shifting with secure handling.</p>
+                        <a class="btn" href="office.html">Read More</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img">
+                        <img src="images/pic4.png" alt="Unpacking and re-arranging at the new place" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <h3>Unpacking &amp; Re-arranging</h3>
+                        <p>Hassle-free unpacking and arranging at new place.</p>
+                        <a class="btn" href="unpackandreloc.html">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="block cta">
+        <div class="container">
+            <h2 class="section-title">Planning a move?</h2>
+            <p>Tell us where you are moving and get a free quotation.</p>
+            <div class="hero-actions">
+                <a class="btn" href="contact.html">Get a free quote</a>
+                <a class="btn btn-outline" href="https://wa.me/918939180119" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FLOATING SOCIAL BUTTONS -->
 <div class="social-float">
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/918939180119" target="_blank" class="whatsapp">
-        <img src="images\whatsapp.png">
+    <a href="https://wa.me/918939180119" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <img src="images/whatsapp.png" alt="WhatsApp">
     </a>
-    <br>
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/varshinipackers1996" target="_blank" class="instagram">
-        <img src="images\instagram.png">
+    <a href="https://www.instagram.com/varshinipackers1996" target="_blank" rel="noopener" aria-label="Visit our Instagram">
+        <img src="images/instagram.png" alt="Instagram">
     </a>
-    
-
 </div>
 
-<!-- nav bar -->
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h2>About Us</h2>
+                <p>
+                    At Varshini Packers &amp; Movers, we specialize in providing safe,
+                    reliable, and hassle-free relocation services across India.
+                    With years of experience and a strong commitment to customer satisfaction.
+                </p>
+            </div>
 
-<nav>
+            <nav aria-label="Quick links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
 
-        <img class="logo" src="images\logo.png">
+            <nav aria-label="Our services">
+                <h2>Our Services</h2>
+                <ul>
+                    <li><a href="house.html">House Relocations</a></li>
+                    <li><a href="office.html">Office Shifting</a></li>
+                    <li><a href="unpackandreloc.html">Unpacking &amp; Re-arranging</a></li>
+                </ul>
+            </nav>
 
-    <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li class="dropdown"><a href="#">Services</a>
-          <ul class="dropdown-menu">
-              <li><a href="house.html">House Shifting</a></li>
-              <li><a  href="office.html">Office Relocation</a></li>
-              <li><a  href="unpackandreloc.html">Packing & Unpacking</a></li>
-          </ul>
-        </li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- booking section -->
-
-<section class="hero">
-    <img src="images/pic2.jpeg" class="hero-img">
-    <h2>Safe, Fast & Reliable Shifting Services</h2>
-    <button onclick="window.location.href='contact.html'">Book Now</button>
-</section>
-
-<!-- about -->
-<section class="about">
-    <div class="about-container">
-
-        <!-- LEFT SIDE IMAGES -->
-        <div class="about-images">
-            <img src="images/pic3.jpg" class="img1">
-            <img src="images/package.png" class="img2">
-
-            <div class="experience">
-                <h2>10+</h2>
-                <p>Years Of Experience</p>
+            <div>
+                <h2>Contact Us</h2>
+                <address>
+                    <p>
+                        No.3/10, Elupidari Amman Koil ST,<br>
+                        Karambakkam, Porur,<br>
+                        Chennai, Tiruvallur<br>
+                        Tamil Nadu-600116.
+                    </p>
+                    <p>Mobile no: <a href="tel:+918939180119">8939180119</a></p>
+                    <p>Send mail: <a href="mailto:Varshinipackers1996@gmail.com">Varshinipackers1996@gmail.com</a></p>
+                </address>
             </div>
         </div>
 
-        <!-- RIGHT SIDE CONTENT -->
-        <div class="about-content">
-            <h4>About Company</h4>
-            <h1>Varshini Packers & Movers</h1>
-
-            <p>
-                At Varshini Packers & Movers, we provide safe, reliable and hassle-free relocation services across India.
-            </p>
-
-            <ul>
-                <li> ✔ Safe & Secure Handling</li>
-                <li> ✔ On-Time Delivery</li>
-                <li> ✔ Transparent Pricing</li>
-                <li> ✔ Customer Satisfaction</li>
-                <li> ✔ Professionals</li>
-                <li> ✔ Easy Move Services</li>
-            </ul>
-
-            <button onclick="window.location.href='about.html'">Explore More</button>
-        </div>
-
+        <p class="footer-bottom">&copy; <span id="year">2026</span> Varshini Packers &amp; Movers. All rights reserved.</p>
     </div>
-</section>
+</footer>
 
-<!-- service -->
-<section class="services">
+<script>
+    // Mobile menu
+    var toggle = document.getElementById('menuToggle');
+    var links = document.getElementById('navLinks');
+    toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
 
-    <h4>Every Move, Made Easy</h4>
-    <h1>Our Services</h1>
+    // Services dropdown
+    var drop = document.querySelector('.has-drop');
+    var dropBtn = drop.querySelector('.drop-btn');
+    dropBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = drop.classList.toggle('open');
+        dropBtn.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', function (e) {
+        if (!drop.contains(e.target)) {
+            drop.classList.remove('open');
+            dropBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
 
-    <div class="service-container">
-
-        <!-- CARD 1 -->
-        <div class="card">
-            <div class="circle-img">
-                <img src="images/19.webp">
-            </div>
-            <h3>House Relocation</h3>
-            <p>Safe and hassle-free house relocation with expert packing.</p>
-            <button onclick="window.location.href='house.html'">Read More</button>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="card">
-            <div class="circle-img">
-                <img src="images/pic5.jpg">
-            </div>
-            <h3>Office Shifting</h3>
-            <p>Efficient office shifting with secure handling.</p>
-            <button onclick="window.location.href='office.html'">Read More</button>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="card">
-            <div class="circle-img">
-                <img src="images/pic4.png">
-            </div>
-            <h3>Unpacking & Re-arranging</h3>
-            <p>Hassle-free unpacking and arranging at new place.</p>
-            <button onclick="window.location.href='unpackandreloc.html'">Read More</button>
-        </div>
-
-    </div>
-
-</section>
-
-<selection  class="subu">
-    <div class="ros">
-        <h2>About Us</h2>
-        <p class="sn">At Varshini Packers & Movers, we specialize in providing safe,<br> reliable, and hassle-free relocation services across India.
-        <br> With years of experience and a strong commitment to customer satisfaction.</p>
-    </div>
-
-    <div class="ros">
-        <h2>Quick Links</h2>
-        <ul>
-            <li><a onclick="window.location.href='index.html'">Home</a></li><br>
-            <li><a onclick="window.location.href='about.html'">Aboust Us</a></li><br>
-            <li><a onclick="window.location.href='gallery.html'">Gallery</a></li><br>
-            <li><a onclick="window.location.href='contact.html'">Contact Us</a></li>
-        </ul>
-    </div>
-
-    <div class="ros">
-        <h2>Our Services</h2>
-        <ul>
-            <li><a onclick="window.location.href='house.html'">House Relocations</a></li><br>
-            <li><a onclick="window.location.href='office.html'">Office Shifting</a></li><br>
-            <li><a onclick="window.location.href='unpackandreloc.html'">Unpacking & Re-arranging</a></li>
-        </ul>
-    </div>
-
-    <div class="ros">
-        <h2>Contact Us</h2>
-        <p>No.3/10, Elupidari Amman Koil ST,<br>
-Karambakkam, Porur,<br> Chennai, Tiruvallur<br>
-Tamil Nadu-600116.</p>
-<p> Mobile.no:<a href="tel: 8939180119"> 8939180119</a>  </p><br>
-<p>Send Mail : <a href="mailto: Varshinipackers1996@gmail.com ">Varshinipackers1996@gmail.com </a></p>
-
-    </div>
-</selection>
-
-
-<script src="script.js"></script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
