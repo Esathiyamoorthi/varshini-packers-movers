@@ -1,120 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You | Varshini Packers & Movers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#141414">
+    <title>Thank You | Varshini Packers & Movers</title>
+    <link rel="icon" href="images/logo-14-dark.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
-}
+    <style>
+        :root {
+            --bg: #141414;
+            --card: #1f1f1f;
+            --red: #e50914;
+            --red-dark: #b20710;
+            --muted: #b3b3b3;
+            --line: #2f2f2f;
+        }
 
-body{
-    background: linear-gradient(135deg,#0d6efd,#1877F2);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.container{
-    background:#fff;
-    width:90%;
-    max-width:600px;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
+        body {
+            font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: grid;
+            place-items: center;
+            padding: 24px 16px;
+            color: #fff;
+            line-height: 1.6;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(229, 9, 20, 0.35), transparent 60%),
+                var(--bg);
+        }
 
-.success-icon{
-    width:100px;
-    height:100px;
-    background:#28a745;
-    color:#fff;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:50px;
-    margin:0 auto 20px;
-}
+        a { color: inherit; text-decoration: none; }
+        a:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 6px; }
 
-h1{
-    color:#0d6efd;
-    margin-bottom:15px;
-}
+        .card {
+            width: 100%;
+            max-width: 560px;
+            padding: clamp(28px, 6vw, 48px);
+            text-align: center;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--red);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+        }
 
-p{
-    color:#555;
-    font-size:18px;
-    line-height:1.6;
-    margin-bottom:25px;
-}
+        .logo { height: 48px; width: auto; margin: 0 auto 24px; }
 
-.btn{
-    display:inline-block;
-    text-decoration:none;
-    background:#0d6efd;
-    color:white;
-    padding:12px 30px;
-    border-radius:50px;
-    font-size:18px;
-    transition:0.3s;
-}
+        .success-icon {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 22px;
+            display: grid;
+            place-items: center;
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #fff;
+            background: var(--red);
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px rgba(229, 9, 20, 0.2);
+        }
 
-.btn:hover{
-    background:#084298;
-}
+        h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); font-weight: 800; line-height: 1.15; }
 
-.company{
-    margin-top:25px;
-    color:#666;
-    font-size:15px;
-}
+        .msg { margin: 14px auto 28px; max-width: 42ch; color: var(--muted); font-size: clamp(1rem, 2.6vw, 1.15rem); }
 
-@media(max-width:768px){
-    .container{
-        padding:25px;
-    }
+        .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 26px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            background: var(--red);
+            border: 2px solid var(--red);
+            border-radius: 8px;
+            transition: background .2s, color .2s, border-color .2s;
+        }
+        .btn:hover { background: var(--red-dark); border-color: var(--red-dark); }
+        .btn-outline { background: transparent; border-color: #fff; }
+        .btn-outline:hover { background: #fff; color: #141414; border-color: #fff; }
 
-    h1{
-        font-size:28px;
-    }
+        .company {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: .95rem;
+        }
+        .company strong { color: #fff; }
+        .company a { color: #fff; font-weight: 600; }
 
-    p{
-        font-size:16px;
-    }
-}
-</style>
+        @media (max-width: 480px) {
+            .actions .btn { width: 100%; }
+        }
 
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+<main class="card">
+    <a href="index.html" aria-label="Varshini Packers & Movers home">
+        <img class="logo" src="images/logo-14-dark.png" alt="Varshini Packers & Movers logo">
+    </a>
 
-    <div class="success-icon">✓</div>
+    <div class="success-icon" aria-hidden="true">&#10003;</div>
 
     <h1>Thank You!</h1>
 
-    <p>
+    <p class="msg">
         Your request has been submitted successfully.
         Our team will contact you shortly regarding your relocation service.
     </p>
 
-    <a href="index.html" class="btn">Back to Home</a>
-
-    <div class="company">
-        <strong>Varshini Packers & Movers</strong><br>
-        Chennai, Tamil Nadu<br>
-        📞 8939180119
+    <div class="actions">
+        <a href="index.html" class="btn">Back to Home</a>
+        <a href="https://wa.me/918939180119" class="btn btn-outline" target="_blank" rel="noopener">Chat on WhatsApp</a>
     </div>
 
-</div>
+    <div class="company">
+        <strong>Varshini Packers &amp; Movers</strong><br>
+        Chennai, Tamil Nadu<br>
+        Call us: <a href="tel:+918939180119">8939180119</a>
+    </div>
+</main>
 
 </body>
 </html>
