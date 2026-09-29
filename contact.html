@@ -6,7 +6,7 @@
     <meta name="description" content="Contact Varshini Packers & Movers, Porur, Chennai. Get a free quotation for house shifting, office relocation, packing and unpacking.">
     <meta name="theme-color" content="#141414">
     <title>Contact Us - Varshini Packers & Movers</title>
-    <link rel="icon" href="images/logo-14-dark.png">
+    <link rel="icon" href="images/profilepic.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -509,59 +509,62 @@
     // ---------- BOOKING FORM ----------
     // IMPORTANT: change this to your live backend URL (https://...) before uploading.
     // "localhost" only works on your own computer.
-    var API_URL = "http://localhost:8080/api/book";
 
-    var form = document.getElementById("bookingForm");
-    var statusBox = document.getElementById("formStatus");
-    var submitBtn = document.getElementById("submitBtn");
+var API_URL = "https://api.web3forms.com/submit";
+var ACCESS_KEY = "b5fdd220-6dff-491e-85d8-5538ddeb94b3";
 
-    function showStatus(type, text) {
-        statusBox.className = "form-status show " + type;
-        statusBox.textContent = text;
+var form = document.getElementById("bookingForm");
+var statusBox = document.getElementById("formStatus");
+var submitBtn = document.getElementById("submitBtn");
+
+function showStatus(type, text) {
+    statusBox.className = "form-status show " + type;
+    statusBox.textContent = text;
+}
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
     }
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
+    var data = {
+        access_key: ACCESS_KEY,
+        subject: "New Booking enquiry from Website",
+        from_name: "Varshini Packers Website",
+        name: document.getElementById("name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        service: document.getElementById("service").value,
+        message: document.getElementById("message").value.trim()
+    };
 
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+    statusBox.className = "form-status";
 
-        var data = {
-            name: document.getElementById("name").value.trim(),
-            phone: document.getElementById("phone").value.trim(),
-            service: document.getElementById("service").value,
-            message: document.getElementById("message").value.trim()
-        };
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
-        statusBox.className = "form-status";
-
-        fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        })
-        .then(function (res) {
-            if (!res.ok) { throw new Error("Server error " + res.status); }
-            return res.text();
-        })
-        .then(function (response) {
-            console.log(response);
-            showStatus("ok", "Thank you! Your request was submitted. We will call you shortly.");
-            form.reset();
-        })
-        .catch(function (error) {
-            console.error("Error:", error);
-            showStatus("err", "Could not submit your request. Please call 8939180119 or message us on WhatsApp.");
-        })
-        .finally(function () {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Submit";
-        });
+    fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(function (res) { return res.json(); })
+    .then(function (result) {
+        if (!result.success) { throw new Error(result.message || "Submit failed"); }
+        showStatus("ok", "Thank you! Your request was submitted. We will call you shortly.");
+        form.reset();
+    })
+    .catch(function (error) {
+        console.error("Error:", error);
+        showStatus("err", "Could not submit your request. Please call 8939180119 or message us on WhatsApp.");
+    })
+    .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
     });
+});
+
 </script>
 </body>
 </html>
